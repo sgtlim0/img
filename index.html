@@ -1,210 +1,211 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style>@-ms-viewport { width: device-width; }</style>
-        <link rel="stylesheet" href="//www.marzipano.net/demos/common/reset.css">
-        <link href="/stylesheets/threesixty.css" rel="stylesheet">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      @-ms-viewport {
+        width: device-width;
+      }
+    </style>
+    <link rel="stylesheet" href="//www.marzipano.net/demos/common/reset.css" />
+    <link
+      href="https://img.tridive.io/stylesheets/threesixty.css"
+      rel="stylesheet"
+    />
 
-        <title>Image App</title>
+    <title>Image App</title>
 
-        <style>
-            * {
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                -webkit-user-drag: none;
-                -webkit-touch-callout: none;
-                -ms-content-zooming: none;
-            }
+    <style>
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-touch-callout: none;
+        -ms-content-zooming: none;
+      }
 
-            html, body {
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-                overflow: hidden;
-            }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
 
-            #pano {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                /* z-index: -1; */
-                opacity: 0.99;
-            }
+      #pano {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* z-index: -1; */
+        opacity: 0.99;
+      }
 
-            #pano_dev{
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: brown;
-            }
-        </style>
-    </head>
-    <body style="overflow-x:hidden; overflow-y:hidden;">
-        <div id="player">
-            
-            <div class="threesixty car">
-              <div class="spinner">
-                <span>0%</span>
-              </div>
-              <ol class="threesixty_images"></ol>
-            </div>
-            <!-- <div id="pano_dev"> -->
-                <div id="pano"></div>
-            <!-- </div> -->
+      #pano_dev {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: brown;
+      }
+    </style>
+  </head>
+  <body style="overflow-x: hidden; overflow-y: hidden">
+    <div id="player">
+      <div class="threesixty car">
+        <div class="spinner">
+          <span>0%</span>
         </div>
-        <!-- <div id="testBtn">
+        <ol class="threesixty_images"></ol>
+      </div>
+      <!-- <div id="pano_dev"> -->
+      <div id="pano"></div>
+      <!-- </div> -->
+    </div>
+    <!-- <div id="testBtn">
             <button style="width: 100px; height: 30px;" onclick="Changed()"> changed </button>
         </div> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="/javascripts/threesixty.js"></script>
-        <script src="/javascripts/marzipano.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://img.tridive.io/javascripts/threesixty.js"></script>
+    <script src="https://img.tridive.io/javascripts/marzipano.js"></script>
 
-        <script>
-            // Create viewer.
-            var viewer = new Marzipano.Viewer(document.getElementById('pano'));
-            // Create geometry.
-            var geometry = new Marzipano.EquirectGeometry([{ width: 4000 }]);
+    <script>
+      // Create viewer.
+      var viewer = new Marzipano.Viewer(document.getElementById("pano"));
+      // Create geometry.
+      var geometry = new Marzipano.EquirectGeometry([{ width: 4000 }]);
 
-            // Create view.
-            var limiter = Marzipano.RectilinearView.limit.traditional(1024, 120*Math.PI/180);
+      // Create view.
+      var limiter = Marzipano.RectilinearView.limit.traditional(
+        1024,
+        (120 * Math.PI) / 180
+      );
 
-            window.addEventListener('load', function(event){
-                LoadImageSlide();
-                
-                Resize();
-                //console.log($('.car').height());
-                Load360();
-                
-                $('#pano').hide(0);
-                $('.car').show(0);
-            });
+      window.addEventListener("load", function (event) {
+        LoadImageSlide();
 
-            window.addEventListener('resize', Resize);
+        Resize();
+        //console.log($('.car').height());
+        Load360();
 
-            window.addEventListener('message', function(e)
-            {
-                if(e.data.data == 'change')
-                {
-                    console.log(e.data);
-                    Changed();
-                }
-            });
+        $("#pano").hide(0);
+        $(".car").show(0);
+      });
 
-            function LoadImageSlide()
-            {
-                var car;
-                car = $('.car').ThreeSixty({
-                    totalFrames: 60, // total number of images you have for 360 slider
-                    endFrame: 60, // end frame for the auto spin animation
-                    currentFrame: 1, // the start frame for auto spin
-                    imgList: '.threesixty_images', // selector for image list
-                    progress: '.spinner', // selector to show the loading progress
-                    imagePath:'https://img.tridive.io/stg/A99A-AOS5K2G1BGG00B-NES-5PB/00/0000/', // path to the images
-                    filePrefix: 'p0', // file prefix if any
-                    ext: '.jpg', // extension for the assets
-                    height: 1080, // height of images
-                    width: 1920, // width of images
-                    navigation: false, // default navigation controls
-                    position: 'bottom-center', // position of controls
-                    disableSpin: false, // if you want to disable the auto spin
-                    responsive: true, // full aspect ratio responsiveness
-                    fullscreen: false, // fullscreen capabilities
-                    fSBackgroundColor: '#000', // fullscreen background color
-                    autoplayDirection: 1, // direction of play
-                    zeroPadding: true,// if your images are padded to the same number of characters by 0
-                    playSpeed: 0,
-                    onReady: function(){
-                        //Load360();
-                    }
-                });
-            }
-            
-            function Load360()
-            {
-                console.log('Load360');
-                
-                // Create source.
-                // var source = Marzipano.ImageUrlSource.fromString(
-                // "/Images/stg_A99A-AOS5K2G1BGG00B-NES-5PB_00_0000_p360.jpg"
-                // );
-                // CORS 로 인해 도메인 호출 안됨 Access-Control-Allow-Origin 설정 변경 필요(스토리지에서...)
-                var source = Marzipano.ImageUrlSource.fromString(
-                "https://img.tridive.io/stg/A99A-AOS5K2G1BGG00B-NES-5PB/00/0000/p360.jpg"
-                );
+      window.addEventListener("resize", Resize);
 
-                var view = new Marzipano.RectilinearView({ yaw: 1.6 , pitch: 0.3 }, limiter);
+      window.addEventListener("message", function (e) {
+        if (e.data.data == "change") {
+          console.log(e.data);
+          Changed();
+        }
+      });
 
-                // Create scene.
-                var scene = viewer.createScene({
-                    source: source,
-                    geometry: geometry,
-                    view: view,
-                    pinFirstLevel: true,
-                    layerOpts: {}
-                });
+      function LoadImageSlide() {
+        var car;
+        car = $(".car").ThreeSixty({
+          totalFrames: 60, // total number of images you have for 360 slider
+          endFrame: 60, // end frame for the auto spin animation
+          currentFrame: 1, // the start frame for auto spin
+          imgList: ".threesixty_images", // selector for image list
+          progress: ".spinner", // selector to show the loading progress
+          imagePath:
+            "https://img.tridive.io/stg/A99A-AOS5K2G1BGG00B-NES-5PB/00/0000/", // path to the images
+          filePrefix: "", // file prefix if any
+          ext: ".png", // extension for the assets
+          height: 1080, // height of images
+          width: 1920, // width of images
+          navigation: false, // default navigation controls
+          position: "bottom-center", // position of controls
+          disableSpin: false, // if you want to disable the auto spin
+          responsive: true, // full aspect ratio responsiveness
+          fullscreen: false, // fullscreen capabilities
+          fSBackgroundColor: "#000", // fullscreen background color
+          autoplayDirection: 1, // direction of play
+          zeroPadding: true, // if your images are padded to the same number of characters by 0
+          playSpeed: 0,
+          onReady: function () {
+            //Load360();
+          },
+        });
+      }
 
-                // Display scene.
-                scene.switchTo();
-            }
+      function Load360() {
+        console.log("Load360");
 
-            function Resize()
-            {
-                console.log('Resize');
-                //$('#pano').width($('.car').width());
-                //$('#pano').height($('.car').height());
+        // Create source.
+        // var source = Marzipano.ImageUrlSource.fromString(
+        // "/Images/stg_A99A-AOS5K2G1BGG00B-NES-5PB_00_0000_p360.jpg"
+        // );
+        // CORS 로 인해 도메인 호출 안됨 Access-Control-Allow-Origin 설정 변경 필요(스토리지에서...)
+        var source = Marzipano.ImageUrlSource.fromString(
+          "https://img.tridive.io/stg/A99A-AOS5K2G1BGG00B-NES-5PB/00/0000/p360.jpg"
+        );
 
-                $('#pano').width('100%');
-                $('#pano').height('100%');
+        var view = new Marzipano.RectilinearView(
+          { yaw: 1.6, pitch: 0.3 },
+          limiter
+        );
 
-                //$('#pano').children('canvas').width($('.car').width());
-                //$('#pano').children('canvas').height($('.car').height());
+        // Create scene.
+        var scene = viewer.createScene({
+          source: source,
+          geometry: geometry,
+          view: view,
+          pinFirstLevel: true,
+          layerOpts: {},
+        });
 
-                // const canvas = document.getElementById("pano").children;
-                
-                // canvas[0].width = $('.car').width();
-                // canvas[0].height = $('.car').height();
+        // Display scene.
+        scene.switchTo();
+      }
 
-                //console.log(canvas[0].width + " / " + canvas[0].height);
+      function Resize() {
+        console.log("Resize");
+        //$('#pano').width($('.car').width());
+        //$('#pano').height($('.car').height());
 
-                $("#testBtn").css({
-                    "position" : "absolute",
-                    "top" : $('.car').height()
-                });
+        $("#pano").width("100%");
+        $("#pano").height("100%");
 
+        //$('#pano').children('canvas').width($('.car').width());
+        //$('#pano').children('canvas').height($('.car').height());
 
-            }
+        // const canvas = document.getElementById("pano").children;
 
-            function Changed()
-            {
-                if($('#pano').is(':visible') == false)
-                {
-                    //Resize();
-                    console.log('pano hidden');
-                    //$('#pano').css('visibility', 'visible');
-                    //$('.car').css('visibility', 'hidden');
-                    $('#pano').show(0);
-                    $('.car').hide(0);
-                }
-                else
-                {
-                    
-                    console.log('pano visible');
-                    //$('#pano').css('visibility', 'hidden');
-                    //$('.car').css('visibility', 'visible');
-                    $('#pano').hide(0);
-                    $('.car').show(0);
-                }
-            }
-        </script>
+        // canvas[0].width = $('.car').width();
+        // canvas[0].height = $('.car').height();
 
-    </body>
+        //console.log(canvas[0].width + " / " + canvas[0].height);
+
+        $("#testBtn").css({
+          position: "absolute",
+          top: $(".car").height(),
+        });
+      }
+
+      function Changed() {
+        if ($("#pano").is(":visible") == false) {
+          //Resize();
+          console.log("pano hidden");
+          //$('#pano').css('visibility', 'visible');
+          //$('.car').css('visibility', 'hidden');
+          $("#pano").show(0);
+          $(".car").hide(0);
+        } else {
+          console.log("pano visible");
+          //$('#pano').css('visibility', 'hidden');
+          //$('.car').css('visibility', 'visible');
+          $("#pano").hide(0);
+          $(".car").show(0);
+        }
+      }
+    </script>
+  </body>
 </html>
