@@ -1,35 +1,123 @@
+
+<!DOCTYPE html>
 <html>
-<body>
-  
-   
-<div
-id="imageView"
-style="width:
- 100%; margin: 0 auto; background-color: red;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     
-<img
-src="https://d19o5od5i0zb9b.cloudfront.net/NX_PNG_TEST/car.FinalImage.0060.png?w=1920&h=1080"
-style="width:
- 100%; height: 100%;">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/sample.css">
+    <script type="text/javascript" src="/javascripts/sample.js"></script>
+    <script src="https://kit.fontawesome.com/b843a97e79.js" crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="PixelDemo.css">
+    <!-- <link type="text/css" rel="stylesheet" href="player.css"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+  <body>
+    <div class="wrapper">
+        <div id="content" class="container">
+            <div class="w-auto p-3"></div>
+            <div class="row">
+                <div class="col">
+                    <div id="player" class="fixed-size">
+                        <!-- <div id="configuration"> -->
+                        <div id="imageView" style="width: 100%; height: 0; margin: 0 auto; position: relative; padding-top: 56.25%;">
+                          <iframe id="render_image" src="http://localhost:80/" frameborder="none" scrolling="no" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                                
+                          </iframe>
+                        </div>
+                         <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="w-auto p-3"></div>
+            <nav>
+                <div class="btn-group btn-group-lg" role="group">
+                    <div class="btn-group btn-group-lg dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="carCodeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Car Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="carCodeDropdown">
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'NB9', 'YGN');">8IW5YCZ7ZHH002 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'NB9', 'NNB');">8IW5YCZ7ZHH002 NB9 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'R4G', 'NNB');">8IW5YCZ7ZHH002 R4G NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'SK8', 'NNB');">8IW5YCZ7ZHH002 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'W3T', 'YGN');">8IW5YCZ7ZHH002 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'WTW', 'YGN');">8IW5YCZ7ZHH002 NB9 YGN</a>
 
-   
-</div>​
-  
-  <div
-id="imageView"
-style="width:
- 100%; margin: 0 auto; background-color: green;">
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG000', 'NB9', 'YGN');">8IW5ZHZ7ZGG000 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG000', 'NB9', 'NNB');">8IW5ZHZ7ZGG000 NB9 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG000', 'R4G', 'NNB');">8IW5ZHZ7ZGG000 R4G NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG000', 'SK8', 'NNB');">8IW5ZHZ7ZGG000 SK8 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG000', 'W3T', 'YGN');">8IW5ZHZ7ZGG000 W3T YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG000', 'WTW', 'YGN');">8IW5ZHZ7ZGG000 WTW YGN</a>
 
-     
-<img
-src="https://d19o5od5i0zb9b.cloudfront.net/NX_PNG_TEST/car.FinalImage.0060.png?w=1920&h=1080&f=webp"
-style="width:
- 100%; height: 100%;">
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZHH000', 'NB9', 'YGN');">8IW5ZHZ7ZHH000 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZHH000', 'NB9', 'NNB');">8IW5ZHZ7ZHH000 NB9 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZHH000', 'R4G', 'NNB');">8IW5ZHZ7ZHH000 R4G NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZHH000', 'SK8', 'NNB');">8IW5ZHZ7ZHH000 SK8 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZHH000', 'W3T', 'YGN');">8IW5ZHZ7ZHH000 W3T YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZHH000', 'WTW', 'YGN');">8IW5ZHZ7ZHH000 WTW YGN</a>
 
-   
-</div>​
-  
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG001', 'NB9', 'YGN');">8IW5ZHZ7ZGG001 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG001', 'NB9', 'NNB');">8IW5ZHZ7ZGG001 NB9 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG001', 'R4G', 'NNB');">8IW5ZHZ7ZGG001 R4G NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG001', 'SK8', 'NNB');">8IW5ZHZ7ZGG001 SK8 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG001', 'W3T', 'YGN');">8IW5ZHZ7ZGG001 W3T YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5ZHZ7ZGG001', 'WTW', 'YGN');">8IW5ZHZ7ZGG001 WTW YGN</a>
+
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'NB9', 'YGN');">8IW5YCZ7ZHH002 NB9 YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'NB9', 'NNB');">8IW5YCZ7ZHH002 NB9 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'R4G', 'NNB');">8IW5YCZ7ZHH002 R4G NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'SK8', 'NNB');">8IW5YCZ7ZHH002 SK8 NNB</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'W3T', 'YGN');">8IW5YCZ7ZHH002 W3T YGN</a>
+                            <a class="dropdown-item" href="#" onclick="onTrimCodeSend('A22A', '8IW5YCZ7ZHH002', 'WTW', 'YGN');">8IW5YCZ7ZHH002 WTW YGN</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group btn-group-lg" role="group">
+                    <div class="btn-group btn-group-lg dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="cameraPosDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Camera&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="cameraPosDropdown">
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('CameraMove', '0');">Exterior</a>
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('CameraMove', '1');">Interior_01</a>
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('CameraMove', '2');">Interior_02</a>
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('CameraMove', '3');">Interior_03</a>
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('CameraMove', '4');">Interior_04</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group btn-group-lg" role="group">
+                    <div class="btn-group btn-group-lg dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="environmentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Showroom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="environmentDropdown">
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('Showroom', '0');">WhiteShowRoom</a>
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('Showroom', '1');">BeachDayShowRoom</a>
+                            <a class="dropdown-item" href="#" onclick="onConfigurator('Showroom', '2');">BeachNightShowRoom</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <script>
+        var req_url = window.location.href;
+        var arr = req_url.split("/");
+        var req_host = arr[0] + "//" + arr[2];
+        console.log(req_host);
+        document.getElementById('render_image').src = req_host;
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   </body>
-  
 </html>
