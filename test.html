@@ -25,7 +25,7 @@
                     <div id="player" class="fixed-size">
                         <!-- <div id="configuration"> -->
                         <div id="imageView" style="width: 100%; height: 0; margin: 0 auto; position: relative; padding-top: 56.25%;">
-                          <iframe id="render_image" src="" frameborder="none" scrolling="no" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                          <iframe id="render_image" src="about:blank" frameborder="none" scrolling="no" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
                                 
                           </iframe>
                         </div>
@@ -133,7 +133,12 @@ function move() {
         document.getElementById('render_image').src = req_host;
 
 	setTimeout( onTrimCodeSend, 1000, "A22A", "8IW5YCZ7ZHH002", "NB9", "YGN" ) ;
-   
+
+	$('iframe').load(function(){    // iframe이 모두 load된후 제어
+		var iframe_html = $('iframe').contents().find('body').html;
+		console.log(iframe_html);
+	});
+	    
 	    
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
