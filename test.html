@@ -133,7 +133,7 @@ function move() {
         console.log(req_host);
         document.getElementById('render_image').src = req_host;
 
-	var iframe_html = $('#render_image').contents().find('body').html;
+	var iframe_html = $('#render_image').contents().find('body');
 	console.log(iframe_html);
 	    
 	
