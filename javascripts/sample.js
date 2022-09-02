@@ -46,6 +46,7 @@ window.addEventListener('message', function(e) {
     if(e.data == "close")
     {
         // 이미지 뷰어로 이동
+        
         this.alert('goto image');
     }
 
