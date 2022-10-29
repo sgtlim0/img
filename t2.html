@@ -1,3 +1,14 @@
+<html>
 
-    <script> window.parent.postMessage(msg, 'close'); </script>
+    <script>
+
+
+        sendMsgToParent('close');
+        // 부모에게 메시지 송신
+        function sendMsgToParent(msg) {
+            window.parent.postMessage(msg, '*');
+        }
+
+    </script>
+</html>
 
