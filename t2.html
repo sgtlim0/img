@@ -1,85 +1,15 @@
-<html lang="ko">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-    <title>Child</title>
-    <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
-
-    <style>
-            * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            background-color: #efefef;
-        }
-        
-        #btn {
-            display: block;
-            padding: 7px 10px;
-            margin: 10px auto 0;
-            border: 1px solid #333;
-            background-color: #fff;
-            cursor: pointer;
-        }
-        
-        .title {
-            font-size: 1.1em;
-            padding: 10px 0 10px;
-            border-bottom: 1px solid #333;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .msgBox {
-            margin: 10px;
-            border: 1px solid #aaa;
-            background-color: #fff;
-        }
-        
-        .msgBox_title {
-            padding: 5px 0;
-            t truncated 508bytes...
-    </style>
-</head>
-
-<body>
-
-    <p class="title">Child</p>
-    <button id="btn">부모에게 메시지 전송</button>
-
-    <div class="msgBox">
-        <p class="msgBox_title">부모에게 받은 메시지</p>
-        <div id="output">
-        </div>
-
-
-
-    </div>
+<html>
 
     <script>
-        var btn = document.getElementById('btn');
-        var output = document.getElementById('output');
-
-        btn.addEventListener('click', function(e) {
-            sendMsgToParent('엄마! 아빠!');
-        });
+       
+       
+        sendMsgToParent('close');
+        
 
         // 부모에게 메시지 송신
         function sendMsgToParent(msg) {
             window.parent.postMessage(msg, '*');
         }
 
-        window.addEventListener('message', receiveMsgFromParent);
-
-        // 부모로부터 메시지 수신
-        f truncated 600 bytes...
     </script>
-
-
-
-</body>
-
 </html>
